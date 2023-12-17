@@ -1,5 +1,6 @@
 #include <math.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "Vector4.h"
 #include "log.h"
 
