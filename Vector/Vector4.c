@@ -1,5 +1,6 @@
+#include <math.h>
 #include "Vector4.h"
-#include "utils/utils.h"
+#include "log.h"
 
 double Vector4dMagnitude(Vector4d a)
 {

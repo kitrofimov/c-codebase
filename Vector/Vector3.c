@@ -1,5 +1,6 @@
+#include <math.h>
 #include "Vector3.h"
-#include "utils/utils.h"
+#include "log.h"
 
 double Vector3dMagnitude(Vector3d a)
 {
