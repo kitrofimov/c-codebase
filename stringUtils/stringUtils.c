@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdbool.h>
-#include "memoryUtils.h"
+#include "memoryUtils/memoryUtils.h"
 #include "stringUtils.h"
 
 static void splitStringFreeCallback(void* p_str)
