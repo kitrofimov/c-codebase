@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdlib.h>
 #include "Vector4.h"
 #include "log.h"
 
