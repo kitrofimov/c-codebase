@@ -12,6 +12,10 @@ add_library(memoryUtils STATIC memoryUtils/memoryUtils.c)
 add_library(stringUtils STATIC stringUtils/stringUtils.c)
 
 target_link_libraries(Matrix Vector)
+if(UNIX)
+    target_link_libraries(Vector m)
+    target_link_libraries(Matrix m)
+endif()
 
 include_directories(.)
 

@@ -1,5 +1,6 @@
 #include <math.h>
 #include <assert.h>
+#include <stddef.h>
 #include "Matrix.h"
 
 static inline Vector4d Matrix4GetColumn(Matrix4* a, size_t i)
