@@ -9,6 +9,6 @@ typedef struct
 #include "Vector/Vector4.h"
 
 // Does not check if there is overflow or not
-Color colorMultiplyByScalar(double scalar);
+Color colorMultiplyByScalar(Color this, double scalar);
 Vector4d ColorToVector4d(Color color);
 

@@ -7,7 +7,7 @@ Color colorMultiplyByScalar(Color this, double scalar)
         (uint8_t) this.g * scalar,
         (uint8_t) this.b * scalar,
         (uint8_t) this.a * scalar
-    }
+    };
 }
 
 Vector4d ColorToVector4d(Color color)
