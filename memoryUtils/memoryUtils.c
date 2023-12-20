@@ -1,4 +1,6 @@
+#include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 #include "log.h"
 
 void* xmalloc(size_t n)
