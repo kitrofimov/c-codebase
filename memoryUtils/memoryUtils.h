@@ -1,5 +1,5 @@
 #pragma once
-#include <stdint.h>
+#include <stddef.h>
 
 // Wrapper functions for standard memory allocation functions,
 // but with error handling (abort if NULL)
