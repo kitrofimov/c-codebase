@@ -76,3 +76,12 @@ bool Vector2dEqual(Vector2d a, Vector2d b)
     return (a.x == b.x &&
             a.y == b.y);
 }
+
+Vector2i Vector2dFloor(Vector2d a)
+{
+    return (Vector2i) {
+        floor(a.x),
+        floor(a.y)
+    };
+}
+

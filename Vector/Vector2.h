@@ -20,6 +20,7 @@ Vector2d Vector2dMultiplyD(Vector2d a, double b);
 Vector2d Vector2dDivideD  (Vector2d a, double b);
 Vector2d Vector2dNegate   (Vector2d a);
 double   Vector2dDot      (Vector2d a, Vector2d b);
+Vector2i Vector2dFloor    (Vector2d a);
 
 double Vector2dIndex(Vector2d a, size_t i);
 bool Vector2dEqual(Vector2d a, Vector2d b);
