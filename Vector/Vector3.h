@@ -7,6 +7,8 @@ typedef struct
     double x, y, z;
 } Vector3d;
 
+#define LOG_VECTOR3D(v, LOG_FN) LOG_FN("%lf %lf %lf\n", (v).x, (v).y, (v).z)
+
 double   Vector3dMagnitude(Vector3d a);
 Vector3d Vector3dNormalize(Vector3d a);
 Vector3d Vector3dAdd      (Vector3d a, Vector3d b);

@@ -9,6 +9,8 @@ typedef struct
 
 #include "Color/Color.h"  // circular dependency
 
+#define LOG_VECTOR4D(v, LOG_FN) LOG_FN("%lf %lf %lf %lf\n", (v).x, (v).y, (v).z, (v).w)
+
 double   Vector4dMagnitude(Vector4d a);
 Vector4d Vector4dNormalize(Vector4d a);
 Vector4d Vector4dAdd      (Vector4d a, Vector4d b);

@@ -141,25 +141,26 @@ Matrix4 Matrix4ConstructView(Vector3d trans, Vector3d rot, Vector3d scale)
     return Matrix4ConstructTRS(Vector3dNegate(trans), Vector3dNegate(rot), scale);
 }
 
+// Construct matrix that transforms everything inside specified rectangular parallelepiped to unit cube (min: (-1, -1, -1), max: (1, 1, 1))
 Matrix4 Matrix4ConstructOrthogonalProjection(
-    double left, double right,
-    double bottom, double top,
-    double near, double far
+    double x_min, double x_max,
+    double y_min, double y_max,
+    double z_min, double z_max
 )
 {
     Matrix4 res = {0};
-    res.data[0][0] = 2 / (right - left);
+    res.data[0][0] = 2 / (x_max - x_min);
     res.data[0][1] = 0;
     res.data[0][2] = 0;
-    res.data[0][3] = -(right + left) / (right - left);
+    res.data[0][3] = -(x_max + x_min) / (x_max - x_min);
     res.data[1][0] = 0;
-    res.data[1][1] = 2 / (top - bottom);
+    res.data[1][1] = 2 / (y_max - y_min);
     res.data[1][2] = 0;
-    res.data[1][3] = -(top + bottom) / (top - bottom);
+    res.data[1][3] = -(y_max + y_min) / (y_max - y_min);
     res.data[2][0] = 0;
     res.data[2][1] = 0;
-    res.data[2][2] = -2 / (far - near);
-    res.data[2][3] = -(far + near) / (far - near);
+    res.data[2][2] = 2 / (z_max - z_min);
+    res.data[2][3] = -(z_max + z_min) / (z_max - z_min);
     res.data[3][0] = 0;
     res.data[3][1] = 0;
     res.data[3][2] = 0;

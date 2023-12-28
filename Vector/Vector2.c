@@ -77,6 +77,14 @@ bool Vector2dEqual(Vector2d a, Vector2d b)
             a.y == b.y);
 }
 
+Vector2i Vector2dRound(Vector2d a)
+{
+    return (Vector2i) {
+        round(a.x),
+        round(a.y)
+    };
+}
+
 Vector2i Vector2dFloor(Vector2d a)
 {
     return (Vector2i) {
