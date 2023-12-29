@@ -1,5 +1,4 @@
 #pragma once
-#include <stdint.h>
 #include <stdbool.h>
 #include "Vector/Vector.h"
 
@@ -14,6 +13,7 @@ static inline void Matrix4SetColumn(Matrix4* a, Vector4d column, size_t i);
 bool Matrix4Equal(Matrix4* a, Matrix4* b);
 
 Vector4d Matrix4MultiplyVector4d(Matrix4* a, Vector4d b);
+Vector4d Matrix4MultiplyVector4dHomogeneous(Matrix4* a, Vector4d b);
 Matrix4 Matrix4MultiplyMatrix4(Matrix4* a, Matrix4* b);
 
 Matrix4 Matrix4ConstructIdentity();
@@ -24,7 +24,13 @@ Matrix4 Matrix4ConstructTRS(Vector3d trans, Vector3d rot, Vector3d scale);
 Matrix4 Matrix4ConstructView(Vector3d trans, Vector3d rot, Vector3d scale);
 
 Matrix4 Matrix4ConstructOrthogonalProjection(
-    double left, double right,
-    double bottom, double top,
-    double near, double far
+    double x_min, double x_max,
+    double y_min, double y_max,
+    double z_min, double z_max
 );
+Matrix4 Matrix4ConstructPerspectiveProjection(
+    double x_max, double x_min,
+    double y_max, double y_min,
+    double z_max, double z_min
+);
+

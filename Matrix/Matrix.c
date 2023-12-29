@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <stddef.h>
 #include "Matrix.h"
+#include "Vector/Vector4.h"
 
 static inline Vector4d Matrix4GetColumn(Matrix4* a, size_t i)
 {
@@ -53,6 +54,12 @@ Vector4d Matrix4MultiplyVector4d(Matrix4* a, Vector4d b)
         ));
     }
     return res;
+}
+
+Vector4d Matrix4MultiplyVector4dHomogeneous(Matrix4* a, Vector4d b)
+{
+    Vector4d res = Matrix4MultiplyVector4d(a, b);
+    return Vector4dDivideD(res, res.w);
 }
 
 Matrix4 Matrix4MultiplyMatrix4(Matrix4* a, Matrix4* b)
@@ -165,6 +172,32 @@ Matrix4 Matrix4ConstructOrthogonalProjection(
     res.data[3][1] = 0;
     res.data[3][2] = 0;
     res.data[3][3] = 1;
+    return res;
+}
+
+Matrix4 Matrix4ConstructPerspectiveProjection(
+    double x_max, double x_min,
+    double y_max, double y_min,
+    double z_max, double z_min
+)
+{
+    Matrix4 res = {0};
+    res.data[0][0] = (2 * z_min) / (x_max - x_min);
+    res.data[0][1] = 0;
+    res.data[0][2] = -(x_max + x_min) / (x_max - x_min);
+    res.data[0][3] = 0;
+    res.data[1][0] = 0;
+    res.data[1][1] = (2 * z_min) / (y_max - y_min);
+    res.data[1][2] = -(y_max + y_min) / (y_max - y_min);
+    res.data[1][3] = 0;
+    res.data[2][0] = 0;
+    res.data[2][1] = 0;
+    res.data[2][2] = (z_max + z_min) / (z_max - z_min);
+    res.data[2][3] = (-2 * z_max * z_min) / (z_max - z_min);
+    res.data[3][0] = 0;
+    res.data[3][1] = 0;
+    res.data[3][2] = 1;
+    res.data[3][3] = 0;
     return res;
 }
 
