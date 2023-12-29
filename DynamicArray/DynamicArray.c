@@ -23,12 +23,12 @@ static void reallocateDynamicArray(DynamicArray* this)
     this->allocated = this->allocated * 2;
 }
 
-void addToDynamicArray(DynamicArray* this, void* element)
+void addToDynamicArray(DynamicArray* this, void* p_element)
 {
     if (this->size+1 > this->allocated)
         reallocateDynamicArray(this);
 
-    memcpy(indexVoidPtr(this->data, this->size, this->nBytesPerElement), element, this->nBytesPerElement);
+    memcpy(indexVoidPtr(this->data, this->size, this->nBytesPerElement), p_element, this->nBytesPerElement);
     this->size += 1;
 }
 
@@ -37,10 +37,10 @@ void deleteLastInDynamicArray(DynamicArray* this)
     this->size -= 1;
 }
 
-void setInDynamicArray(DynamicArray* this, void* element, size_t i)
+void setInDynamicArray(DynamicArray* this, void* p_element, size_t i)
 {
     assert(i < this->size);
-    memcpy(indexVoidPtr(this->data, i, this->nBytesPerElement), element, this->nBytesPerElement);
+    memcpy(indexVoidPtr(this->data, i, this->nBytesPerElement), p_element, this->nBytesPerElement);
 }
 
 void* indexDynamicArray(DynamicArray* this, size_t i)
@@ -66,5 +66,13 @@ DynamicArray* copyDynamicArray(DynamicArray* this)
     memcpy(arr->data, this->data, this->nBytesPerElement * this->size);
     arr->size = this->size;
     return arr;
+}
+
+void concatDynamicArray(DynamicArray* this, DynamicArray* other)
+{
+    assert(this->nBytesPerElement == other->nBytesPerElement);
+    assert(this->freeCallback == other->freeCallback);
+    for (size_t i = 0; i < other->size; i++)
+        addToDynamicArray(this, indexDynamicArray(other, i));
 }
 

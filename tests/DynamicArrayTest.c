@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <string.h>
+#include <strings.h>
 #include "DynamicArray/DynamicArray.h"
 #include "memoryUtils/memoryUtils.h"
 
@@ -9,7 +10,8 @@ typedef struct __attribute__((packed))
     double b;
 } TestStruct;
 
-void testInt()
+// Test basic functions for integers
+void testBasicInt()
 {
     DynamicArray* arr = newDynamicArray(3, sizeof(int), NULL);
     assert(arr->size == 0);
@@ -42,7 +44,8 @@ void testInt()
     freeDynamicArray(arr);
 }
 
-void testStruct()
+// Test basic functions for a structure
+void testBasicStruct()
 {
     DynamicArray* arr = newDynamicArray(3, sizeof(TestStruct), NULL);
     assert(arr->size == 0);
@@ -85,11 +88,12 @@ void testStruct()
     freeDynamicArray(arr);
 }
 
-void freeCallback(void* p_p_int)
+static void freeCallback(void* p_p_int)
 {
     xfree(*(int**) p_p_int);
 }
 
+// Test the free callback functionality
 void testFreeCallback()
 {
     DynamicArray* arr = newDynamicArray(3, sizeof(int*), freeCallback);
@@ -104,9 +108,58 @@ void testFreeCallback()
     freeDynamicArray(arr);
 }
 
+// Test `copyDynamicArray`
+void testCopy()
+{
+    const int N = 4;
+    DynamicArray* arr = newDynamicArray(N, sizeof(int), NULL);
+    
+    addToDynamicArray(arr, &(int) {1});
+    addToDynamicArray(arr, &(int) {2});
+    addToDynamicArray(arr, &(int) {3});
+    addToDynamicArray(arr, &(int) {4});
+
+    DynamicArray* copyArr = copyDynamicArray(arr);
+
+    assert(copyArr->nBytesPerElement == arr->nBytesPerElement);
+    assert(copyArr->size == arr->size);
+    assert(copyArr->allocated == arr->allocated);
+    assert(copyArr->freeCallback == arr->freeCallback);
+
+    for (size_t i = 0; i < N; i++)
+        assert(*(int*) indexDynamicArray(arr, i) == *(int*) indexDynamicArray(copyArr, i));
+}
+
+// Test `concatDynamicArray`
+void testConcat()
+{
+    DynamicArray* arr1 = newDynamicArray(3, sizeof(int), NULL);
+    DynamicArray* arr2 = newDynamicArray(4, sizeof(int), NULL);
+    
+    for (int i = 0; i < 4; i++)
+    {
+        if (i < 3)
+            addToDynamicArray(arr1, &i);
+        addToDynamicArray(arr2, &i);
+    }
+
+    concatDynamicArray(arr1, arr2);
+
+    assert(arr1->size == 7);
+    assert(arr1->nBytesPerElement == arr2->nBytesPerElement && arr1->nBytesPerElement == sizeof(int));
+    assert(arr1->freeCallback == arr2->freeCallback && arr1->freeCallback == NULL);
+
+    assert(arr2->size == 4);
+    assert(arr2->allocated == 4);
+    assert(arr2->nBytesPerElement == sizeof(int));
+    assert(arr2->freeCallback == NULL);
+}
+
 int main()
 {
-    testInt();
-    testStruct();
+    testBasicInt();
+    testBasicStruct();
     testFreeCallback();
+    testCopy();
+    testConcat();
 }

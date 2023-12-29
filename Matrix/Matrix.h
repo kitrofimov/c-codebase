@@ -29,8 +29,8 @@ Matrix4 Matrix4ConstructOrthogonalProjection(
     double z_min, double z_max
 );
 Matrix4 Matrix4ConstructPerspectiveProjection(
-    double x_max, double x_min,
-    double y_max, double y_min,
-    double z_max, double z_min
+    double x_min_near, double x_max_near,
+    double y_min_near, double y_max_near,
+    double z_near, double z_far
 );
 

@@ -176,28 +176,35 @@ Matrix4 Matrix4ConstructOrthogonalProjection(
 }
 
 Matrix4 Matrix4ConstructPerspectiveProjection(
-    double x_max, double x_min,
-    double y_max, double y_min,
-    double z_max, double z_min
+    double x_min_near, double x_max_near,
+    double y_min_near, double y_max_near,
+    double z_near, double z_far
 )
 {
-    Matrix4 res = {0};
-    res.data[0][0] = (2 * z_min) / (x_max - x_min);
-    res.data[0][1] = 0;
-    res.data[0][2] = -(x_max + x_min) / (x_max - x_min);
-    res.data[0][3] = 0;
-    res.data[1][0] = 0;
-    res.data[1][1] = (2 * z_min) / (y_max - y_min);
-    res.data[1][2] = -(y_max + y_min) / (y_max - y_min);
-    res.data[1][3] = 0;
-    res.data[2][0] = 0;
-    res.data[2][1] = 0;
-    res.data[2][2] = (z_max + z_min) / (z_max - z_min);
-    res.data[2][3] = (-2 * z_max * z_min) / (z_max - z_min);
-    res.data[3][0] = 0;
-    res.data[3][1] = 0;
-    res.data[3][2] = 1;
-    res.data[3][3] = 0;
-    return res;
+    Matrix4 perspective = {0};
+    perspective.data[0][0] = z_near;
+    perspective.data[0][1] = 0;
+    perspective.data[0][2] = 0;
+    perspective.data[0][3] = 0;
+    perspective.data[1][0] = 0;
+    perspective.data[1][1] = z_near;
+    perspective.data[1][2] = 0;
+    perspective.data[1][3] = 0;
+    perspective.data[2][0] = 0;
+    perspective.data[2][1] = 0;
+    perspective.data[2][2] = z_near + z_far;
+    perspective.data[2][3] = -z_near * z_far;
+    perspective.data[3][0] = 0;
+    perspective.data[3][1] = 0;
+    perspective.data[3][2] = 1;
+    perspective.data[3][3] = 0;
+
+    Matrix4 orthogonal = Matrix4ConstructOrthogonalProjection(
+        x_min_near, x_max_near,
+        y_min_near, y_max_near,
+        z_near, z_far
+    );
+
+    return Matrix4MultiplyMatrix4(&orthogonal, &perspective);
 }
 
