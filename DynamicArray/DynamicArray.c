@@ -37,6 +37,11 @@ void deleteLastInDynamicArray(DynamicArray* this)
     this->size -= 1;
 }
 
+void deleteAllFromDynamicArray(DynamicArray* this)
+{
+    this->size = 0;
+}
+
 void setInDynamicArray(DynamicArray* this, void* p_element, size_t i)
 {
     assert(i < this->size);

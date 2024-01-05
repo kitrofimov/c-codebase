@@ -25,6 +25,7 @@ void freeDynamicArray(DynamicArray* this);
 // Copy the value pointed to by `p_element` as the new value of the array
 void addToDynamicArray(DynamicArray* this, void* p_element);
 void deleteLastInDynamicArray(DynamicArray* this);
+void deleteAllFromDynamicArray(DynamicArray* this);
 // Copy the value pointed to by `p_element` as the `i`th value of the array
 void setInDynamicArray(DynamicArray* this, void* p_element, size_t i);
 void* indexDynamicArray(DynamicArray* this, size_t i);
