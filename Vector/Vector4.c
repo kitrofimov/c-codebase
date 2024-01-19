@@ -75,6 +75,14 @@ double Vector4dDot(Vector4d a, Vector4d b)
            a.w * b.w;
 }
 
+Vector3d Vector4dHomogenousDivide(Vector4d a)
+{
+    Vector4d res = Vector4dDivideD(a, a.w);
+    return (Vector3d) {
+        res.x, res.y, res.z
+    };
+}
+
 Color Vector4dToColor(Vector4d a)
 {
     assert(a.x >= 0 && a.y >= 0 && a.z >= 0 && a.w >= 0);

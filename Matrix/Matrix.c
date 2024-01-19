@@ -58,8 +58,11 @@ Vector4d Matrix4MultiplyVector4d(Matrix4* a, Vector4d b)
 
 Vector4d Matrix4MultiplyVector4dHomogeneous(Matrix4* a, Vector4d b)
 {
-    Vector4d res = Matrix4MultiplyVector4d(a, b);
-    return Vector4dDivideD(res, res.w);
+    Vector4d homogenous = Matrix4MultiplyVector4d(a, b);
+    Vector3d res = Vector4dHomogenousDivide(homogenous);
+    return (Vector4d) {
+        res.x, res.y, res.z, 1.
+    };
 }
 
 Matrix4 Matrix4MultiplyMatrix4(Matrix4* a, Matrix4* b)

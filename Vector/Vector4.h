@@ -1,6 +1,7 @@
 #pragma once
 #include <stddef.h>
 #include <stdbool.h>
+#include "Vector3.h"
 
 typedef struct
 {
@@ -19,6 +20,7 @@ Vector4d Vector4dMultiplyD(Vector4d a, double b);
 Vector4d Vector4dDivideD  (Vector4d a, double b);
 Vector4d Vector4dNegate   (Vector4d a);
 double   Vector4dDot      (Vector4d a, Vector4d b);
+Vector3d Vector4dHomogenousDivide(Vector4d a);
 
 Color Vector4dToColor(Vector4d a);
 

@@ -1,6 +1,8 @@
 #pragma once
 #include <stddef.h>
 
+#define indexVoidPointer(ptr, i, nBytesPerElement) ((char*) ptr + (i * nBytesPerElement))
+
 // Wrapper functions for standard memory allocation functions,
 // but with error handling (abort if NULL)
 

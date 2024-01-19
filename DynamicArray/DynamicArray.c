@@ -4,8 +4,6 @@
 #include "DynamicArray.h"
 #include "memoryUtils/memoryUtils.h"
 
-#define indexVoidPtr(ptr, i, nBytesPerElement) ((char*) ptr + (i * nBytesPerElement))
-
 DynamicArray* newDynamicArray(size_t nElements, size_t nBytesPerElement, freeCallbackFunctionType freeCallback)
 {
     DynamicArray* this = xmalloc(sizeof(DynamicArray));
@@ -28,7 +26,7 @@ void addToDynamicArray(DynamicArray* this, void* p_element)
     if (this->size+1 > this->allocated)
         reallocateDynamicArray(this);
 
-    memcpy(indexVoidPtr(this->data, this->size, this->nBytesPerElement), p_element, this->nBytesPerElement);
+    memcpy(indexVoidPointer(this->data, this->size, this->nBytesPerElement), p_element, this->nBytesPerElement);
     this->size += 1;
 }
 
@@ -45,13 +43,13 @@ void deleteAllFromDynamicArray(DynamicArray* this)
 void setInDynamicArray(DynamicArray* this, void* p_element, size_t i)
 {
     assert(i < this->size);
-    memcpy(indexVoidPtr(this->data, i, this->nBytesPerElement), p_element, this->nBytesPerElement);
+    memcpy(indexVoidPointer(this->data, i, this->nBytesPerElement), p_element, this->nBytesPerElement);
 }
 
 void* indexDynamicArray(DynamicArray* this, size_t i)
 {
     assert(i < this->size);
-    return indexVoidPtr(this->data, i, this->nBytesPerElement);
+    return indexVoidPointer(this->data, i, this->nBytesPerElement);
 }
 
 void freeDynamicArray(DynamicArray* this)
