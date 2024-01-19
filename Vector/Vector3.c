@@ -105,3 +105,11 @@ Vector3d Vector3dZeroZ(Vector3d a)
         a.x, a.y, 0
     };
 }
+
+Vector4d Vector3dToVector4dHomogenous(Vector3d a)
+{
+    return (Vector4d) {
+        a.x, a.y, a.z, 1.
+    };
+}
+
