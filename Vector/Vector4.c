@@ -86,11 +86,12 @@ Vector3d Vector4dHomogenousDivide(Vector4d a)
 Color Vector4dToColor(Vector4d a)
 {
     assert(a.x >= 0 && a.y >= 0 && a.z >= 0 && a.w >= 0);
+    Vector4d temp = Vector4dMultiplyD(a, 255.);
     return (Color) {
-        (a.x > 255) ? 255 : a.x,
-        (a.y > 255) ? 255 : a.y,
-        (a.z > 255) ? 255 : a.z,
-        (a.w > 255) ? 255 : a.w
+        round(temp.x),
+        round(temp.y),
+        round(temp.z),
+        round(temp.w)
     };
 }
 

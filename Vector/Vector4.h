@@ -22,6 +22,7 @@ Vector4d Vector4dNegate   (Vector4d a);
 double   Vector4dDot      (Vector4d a, Vector4d b);
 Vector3d Vector4dHomogenousDivide(Vector4d a);
 
+// [0.0, 1.0] => [0, 255]
 Color Vector4dToColor(Vector4d a);
 
 double Vector4dIndex(Vector4d a, size_t i);
