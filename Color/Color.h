@@ -6,9 +6,5 @@ typedef struct
     uint8_t r, g, b, a;
 } Color;
 
-#include "Vector/Vector4.h"
-
-// Does not check if there is overflow or not
-Color colorMultiplyByScalar(Color this, double scalar);
-Vector4d ColorToVector4d(Color color);
+uint32_t ColorToUint32RGBA(Color color);
 

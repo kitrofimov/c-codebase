@@ -1,22 +1,8 @@
 #include "Color.h"
 
-Color colorMultiplyByScalar(Color this, double scalar)
+uint32_t ColorToUint32RGBA(Color color)
 {
-    return (Color) {
-        (uint8_t) this.r * scalar, 
-        (uint8_t) this.g * scalar,
-        (uint8_t) this.b * scalar,
-        (uint8_t) this.a * scalar
-    };
-}
-
-Vector4d ColorToVector4d(Color color)
-{
-    return (Vector4d) {
-        color.r,
-        color.g,
-        color.b,
-        color.a
-    };
+    return (uint32_t) color.r << 24 | (uint32_t) color.g << 16 |\
+           (uint32_t) color.b << 8 | (uint32_t) color.a;
 }
 
