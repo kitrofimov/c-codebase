@@ -11,7 +11,7 @@
 #if defined(NDEBUG)
     #define LOGM(...)
     #define LOGD(...)
-    #define LOGI(...)
+    #define LOGI(...) fprintf(stderr, "I: "__VA_ARGS__)
     #define LOGW(...) fprintf(stderr, "W: "__VA_ARGS__)
     #define LOGE(...) fprintf(stderr, "E: "__VA_ARGS__)
     #define LOGF(...) fprintf(stderr, "F: "__VA_ARGS__)

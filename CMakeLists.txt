@@ -3,7 +3,6 @@ project(c-codebase)
 
 enable_testing()
 
-add_library(Color STATIC Color/Color.c)
 add_library(Vector STATIC Vector/Vector2.c Vector/Vector3.c Vector/Vector4.c)
 add_library(Matrix STATIC Matrix/Matrix.c)
 add_library(DynamicArray STATIC DynamicArray/DynamicArray.c)

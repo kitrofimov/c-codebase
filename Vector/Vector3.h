@@ -27,3 +27,4 @@ bool Vector3dEqual(Vector3d a, Vector3d b);
 
 // Return (Vector3d) {a.x, a.y, 0}
 Vector3d Vector3dZeroZ(Vector3d a);
+
