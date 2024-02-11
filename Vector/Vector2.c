@@ -93,3 +93,11 @@ Vector2i Vector2dFloor(Vector2d a)
     };
 }
 
+Vector2i Vector2iAdd(Vector2i a, Vector2i b)
+{
+    return (Vector2i) {
+        a.x + b.x,
+        a.y + b.y
+    };
+}
+

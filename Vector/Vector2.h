@@ -29,3 +29,5 @@ Vector2i Vector2dFloor    (Vector2d a);
 double Vector2dIndex(Vector2d a, size_t i);
 bool Vector2dEqual(Vector2d a, Vector2d b);
 
+Vector2i Vector2iAdd(Vector2i a, Vector2i b);
+
