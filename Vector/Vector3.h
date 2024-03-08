@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#pragma pack(1)
 typedef struct
 {
     double x, y, z;

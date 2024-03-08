@@ -2,11 +2,13 @@
 #include <stddef.h>
 #include <stdbool.h>
 
+#pragma pack(1)
 typedef struct
 {
     int x, y;
 } Vector2i;
 
+#pragma pack(1)
 typedef struct
 {
     double x, y;
