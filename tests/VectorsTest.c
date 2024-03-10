@@ -25,7 +25,7 @@ void test2()
     c = Vector2dNegate(a);
     assert(Vector2dEqual(c, (Vector2d) {-3., -4.}));
 
-    assert(Vector2dIndex(a, 1) == 4.);
+    assert(Vector2dIndex(&a, 1) == 4.);
 }
 
 void test3()
@@ -51,7 +51,7 @@ void test3()
     c = Vector3dNegate(a);
     assert(Vector3dEqual(c, (Vector3d) {-3., -4., -5.}));
 
-    assert(Vector3dIndex(a, 2) == 5.);
+    assert(Vector3dIndex(&a, 2) == 5.);
 }
 
 void test4()
@@ -77,7 +77,7 @@ void test4()
     c = Vector4dNegate(a);
     assert(Vector4dEqual(c, (Vector4d) {-3., -4., -5., -2.3}));
 
-    assert(Vector4dIndex(a, 3) == 2.3);
+    assert(Vector4dIndex(&a, 3) == 2.3);
 }
 
 int main()

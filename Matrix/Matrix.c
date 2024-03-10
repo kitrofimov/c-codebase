@@ -50,7 +50,7 @@ Vector4d Matrix4MultiplyVector4d(Matrix4* a, Vector4d b)
     for (size_t i = 0; i < 4; i++)
     {
         res = Vector4dAdd(res, Vector4dMultiplyD(
-            Matrix4GetColumn(a, i), Vector4dIndex(b, i)
+            Matrix4GetColumn(a, i), Vector4dIndex(&b, i)
         ));
     }
     return res;

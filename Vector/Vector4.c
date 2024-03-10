@@ -1,6 +1,5 @@
 #include <math.h>
 #include <stdlib.h>
-#include <assert.h>
 #include "Vector4.h"
 #include "log.h"
 
@@ -93,24 +92,6 @@ Color Vector4dToColor(Vector4d a)
         round(temp.z),
         round(temp.w)
     };
-}
-
-double Vector4dIndex(Vector4d a, size_t i)
-{
-    switch (i)
-    {
-        case 0:
-            return a.x;
-        case 1:
-            return a.y;
-        case 2:
-            return a.z;
-        case 3:
-            return a.w;
-        default:
-            LOGE("Vector4d invalid index %zu", i);
-            abort();
-    }
 }
 
 bool Vector4dEqual(Vector4d a, Vector4d b)

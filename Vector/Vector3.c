@@ -76,22 +76,6 @@ Vector3d Vector3dCross(Vector3d a, Vector3d b)
     };
 }
 
-double Vector3dIndex(Vector3d a, size_t i)
-{
-    switch (i)
-    {
-        case 0:
-            return a.x;
-        case 1:
-            return a.y;
-        case 2:
-            return a.z;
-        default:
-            LOGE("Vector3d invalid index %zu", i);
-            abort();
-    }
-}
-
 bool Vector3dEqual(Vector3d a, Vector3d b)
 {
     return (a.x == b.x &&

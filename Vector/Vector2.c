@@ -57,20 +57,6 @@ double Vector2dDot(Vector2d a, Vector2d b)
            a.y * b.y;
 }
 
-double Vector2dIndex(Vector2d a, size_t i)
-{
-    switch (i)
-    {
-        case 0:
-            return a.x;
-        case 1:
-            return a.y;
-        default:
-            LOGE("Vector2d invalid index %zu", i);
-            abort();
-    }
-}
-
 bool Vector2dEqual(Vector2d a, Vector2d b)
 {
     return (a.x == b.x &&
