@@ -6,9 +6,9 @@
 
 #define TIMER_REPORT(name, type, multiplier) \
     ((type) name##_diff * (multiplier) / CLOCKS_PER_SEC)
-#define TIMER_REPORT_S(name, type)  TIMER_REPORT(name, name, type, 1)
-#define TIMER_REPORT_MS(name, type) TIMER_REPORT(name, name, type, 1000)
-#define TIMER_REPORT_US(name, type) TIMER_REPORT(name, name, type, 1000000)
+#define TIMER_REPORT_S(name, type)  TIMER_REPORT(name, type, 1)
+#define TIMER_REPORT_MS(name, type) TIMER_REPORT(name, type, 1000)
+#define TIMER_REPORT_US(name, type) TIMER_REPORT(name, type, 1000000)
 
 #define TIME_SECTION(var, type, multiplier, section) \
     { \
