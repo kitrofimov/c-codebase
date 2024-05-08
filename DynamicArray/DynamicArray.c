@@ -3,8 +3,12 @@
 #include <assert.h>
 #include "DynamicArray.h"
 #include "memoryUtils/memoryUtils.h"
+#include "voidptr.h"
 
-DynamicArray* newDynamicArray(size_t nElements, size_t nBytesPerElement, freeCallbackFunctionType freeCallback)
+DynamicArray* newDynamicArray(
+    size_t nElements, size_t nBytesPerElement,
+    freeCallbackFunctionType freeCallback
+)
 {
     DynamicArray* this = xmalloc(sizeof(DynamicArray));
     this->data = xcalloc(nElements, nBytesPerElement);
@@ -20,7 +24,10 @@ void reallocateDynamicArray(DynamicArray* this, size_t n)
     assert(n > this->allocated);
     this->data = xrealloc(this->data, n * this->nBytesPerElement);
     this->allocated = n;
-    memset(this->data + this->size, '\0', this->nBytesPerElement * (n - this->size));
+    memset(
+        VOID_PTR_ADD(this->data, this->size), '\0',
+        this->nBytesPerElement * (n - this->size)
+    );
 }
 
 void addToDynamicArray(DynamicArray* this, void* p_element)
