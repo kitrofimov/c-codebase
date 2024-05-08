@@ -111,9 +111,9 @@ void testFreeCallback()
 // Test `copyDynamicArray`
 void testCopy()
 {
-    const int N = 4;
+    const size_t N = 4;
     DynamicArray* arr = newDynamicArray(N, sizeof(int), NULL);
-    
+
     addToDynamicArray(arr, &(int) {1});
     addToDynamicArray(arr, &(int) {2});
     addToDynamicArray(arr, &(int) {3});
@@ -135,7 +135,7 @@ void testConcat()
 {
     DynamicArray* arr1 = newDynamicArray(3, sizeof(int), NULL);
     DynamicArray* arr2 = newDynamicArray(4, sizeof(int), NULL);
-    
+
     for (int i = 0; i < 4; i++)
     {
         if (i < 3)
