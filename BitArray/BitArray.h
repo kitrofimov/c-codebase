@@ -5,8 +5,8 @@
 
 typedef struct
 {
-    uint8_t* data;
-    size_t size;  // in bits
+	uint8_t* data;
+	size_t size;  // in bits
 } BitArray;
 
 BitArray* newBitArray(size_t n_bits);

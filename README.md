@@ -4,14 +4,14 @@ My C codebase.
 
 ## Features
 - Structs:
-    - Color
-    - Matrix
-    - Vector
+	- Color
+	- Matrix
+	- Vector
 - Data Structures:
-    - DynamicArray
+	- DynamicArray
 - Utilities:
-    - fileUtils
-    - memoryUtils
-    - stringUtils
-    - Logging
+	- fileUtils
+	- memoryUtils
+	- stringUtils
+	- Logging
 

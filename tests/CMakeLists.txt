@@ -1,15 +1,15 @@
 set(TESTS
-    DynamicArrayTest
-    VectorsTest
-    MatrixTest
-    fileUtilsTest
-    stringUtilsTest
-    BitArrayTest
+	DynamicArrayTest
+	VectorsTest
+	MatrixTest
+	fileUtilsTest
+	stringUtilsTest
+	BitArrayTest
 )
 
 foreach(TEST_NAME ${TESTS})
-    add_executable(${TEST_NAME} ${TEST_NAME}.c)
-    add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+	add_executable(${TEST_NAME} ${TEST_NAME}.c)
+	add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
 endforeach()
 
 target_link_libraries(DynamicArrayTest DynamicArray)

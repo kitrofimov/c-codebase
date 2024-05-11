@@ -12,21 +12,21 @@
  */
 int readLine(char** line, size_t* length, FILE* fp)
 {
-    size_t neededLength = distanceToNextOccurenceOfCharInFile('\n', fp);
-    neededLength++;  // null byte exists
+	size_t neededLength = distanceToNextOccurenceOfCharInFile('\n', fp);
+	neededLength++;	 // null byte exists
 
-    // reallocate the line buffer if it is not long enough
-    if (*line == NULL)
-        goto allocate;
-    else if (*length < neededLength)
-    {
-        xfree(*line);
+	// reallocate the line buffer if it is not long enough
+	if (*line == NULL)
+		goto allocate;
+	else if (*length < neededLength)
+	{
+		xfree(*line);
 allocate:
-        *line = xmalloc(neededLength * sizeof(char));
-        *length = neededLength;
-    }
+		*line = xmalloc(neededLength * sizeof(char));
+		*length = neededLength;
+	}
 
-    return (fgets(*line, *length, fp) == NULL) ? EOF : 0;
+	return (fgets(*line, *length, fp) == NULL) ? EOF : 0;
 }
 
 /**
@@ -37,17 +37,17 @@ allocate:
  */
 size_t distanceToNextOccurenceOfCharInFile(char ch, FILE* fp)
 {
-    size_t distance = 0;
-    long startPos = ftell(fp);
-    char c;
-    while ((c = fgetc(fp)) != EOF)
-    {
-        distance++;
-        if (c == ch)
-            break;
-    }
+	size_t distance = 0;
+	long startPos = ftell(fp);
+	char c;
+	while ((c = fgetc(fp)) != EOF)
+	{
+		distance++;
+		if (c == ch)
+			break;
+	}
 
-    fseek(fp, startPos, SEEK_SET);
-    return distance;
+	fseek(fp, startPos, SEEK_SET);
+	return distance;
 }
 
