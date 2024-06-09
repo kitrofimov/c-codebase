@@ -19,6 +19,8 @@
 		)\
 	)
 
+#define FRACTIONAL(x) (x) - floor(x)
+
 #define RAD(x) ((M_PI / 180) * (x))
 #define DEG(x) ((180 / M_PI) * (x))
 
