@@ -26,7 +26,7 @@ Vector3d Vector4dHomogenousDivide(Vector4d a);
 // [0.0, 1.0] => [0, 255]
 Color Vector4dToColor(Vector4d a);
 
-static inline double Vector4dIndex(Vector4d* a, size_t i)
+static inline double Vector4dIndex(const Vector4d* a, size_t i)
 {
 	assert(i <= 3);
 	return ((double*) a)[i];
